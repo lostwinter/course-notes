@@ -15,7 +15,7 @@ These are my notes from week 1 of the Rapid Deployment course.
 **Config > Initializers** store apps that your source code can use.
 
 **DB** holds sqlite3 files. If using another DB, this will be empty.
-------------------
+
 #### Creation Procedure
 1. `rails new myapp`
 2. Checkout databases.yml, then gemfile, then routes, then readme.
@@ -33,16 +33,25 @@ These are my notes from week 1 of the Rapid Deployment course.
 5. Add columns with `rails g migration add_user_id_to_posts`. In the migration, ```ruby add_column :posts, :user_id, :integer``` (table, column, type).
 
 
-`rake db:setup`</br>
-`rake db:drop`</br>
-`rake db:create`</br>
-`rake db:migrate`</br>
-`rake db:rollback STEP=3`</br>
+`rake db:setup`
+`rake db:drop`
+`rake db:create`
+`rake db:migrate`
+`rake db:rollback STEP=3`
 
 #### What is ActiveRecord?
 ActiveRecord is an object relational mapper (ORM). It determines how the DB becomes code. Turns ruby commands into SQL.
 * Each row correlates to an object
 * Each column has getters and setters.
+
+#### User.find(1)
+`User.take(2)` Draws 2 records from user table
+`User.first` or `User.first(3)`
+`User.last `
+`User.find_by name: ‘Bobby’`
+`User.where("orders_count = ?", params[:orders])`
+`User.select(“column1, column3”)`
+`User.create(title: ‘Farts’, url: ‘www.farts.com’, user: User.first)`
 
 #### Naming Conventions
 * class Group < ActiveRecord::Base
