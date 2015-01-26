@@ -116,3 +116,5 @@ posts_path
 
 ### Questions.
 * Is there are way/reason to consolidate migrations? like if you have 30 migrations
+
+
