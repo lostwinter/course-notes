@@ -3,6 +3,21 @@
 
 These are my notes from week 1 of the Rapid Deployment course.
 
+#### Protocol
+`bundle exec rake db:migrate`
+
+Model and Form:
+
+1. Create model layer file. `dog.rb`. 
+2. Create migration. `rails generate migration create_dogs`. Update migration with table columns. Then `rake db:migrate`. 
+3. Play around with db in console.
+4. Create routes. 
+5. Add controller and actions.
+6. Add folder and views for each action. `new` and `edit` need instance vars.
+7. Create model-backed form on view file. Add `binding.pry` in `create` action to check data submission. Use strong params. 
+8. Add validations.
+9. Refactor.
+
 #### Directory Structure
 **Assets** hold static files like images, CSS and JS.
 
@@ -22,7 +37,7 @@ These are my notes from week 1 of the Rapid Deployment course.
 3. Check routes: `rake routes`. 
 4. Start server. For Cloud9: `rails s -p $PORT -b $IP`
 5. Set up Git.
-6. Deploy to Heroku: `heroku create`, `git push heroku master`. To urn migrations on Heroku use `heroku run rake db:migrate`.
+6. Deploy to Heroku: `heroku create`, `git push heroku master`. To run migrations on Heroku use `heroku run rake db:migrate`.
 
 ## Models
 1. Setup and modify db tables with migrations: `rails generate migration create_posts`. Set up tables in migration.
@@ -31,7 +46,6 @@ These are my notes from week 1 of the Rapid Deployment course.
 ```ruby class Post < ActiveRecord::Base```
 4. Verify. `rails c`. Create a record.
 5. Add columns with `rails g migration add_user_id_to_posts`. In the migration, ```ruby add_column :posts, :user_id, :integer``` (table, column, type).
-
 
 `rake db:setup`
 `rake db:drop`
@@ -43,6 +57,12 @@ These are my notes from week 1 of the Rapid Deployment course.
 ActiveRecord is an object relational mapper (ORM). It determines how the DB becomes code. Turns ruby commands into SQL.
 * Each row correlates to an object
 * Each column has getters and setters.
+
+#### Migrations
+Migrations alter the db schema. Not written in codebase.
+Do not alter migrations. Rollback only if you haven't pushed code to git.
+
+`rake -T | grep db`
 
 #### User.find(1)
 `User.take(2)` Draws 2 records from user table
@@ -114,7 +134,4 @@ posts_path
 <% end %
 
 
-### Questions.
-* Is there are way/reason to consolidate migrations? like if you have 30 migrations
-
-
+END
